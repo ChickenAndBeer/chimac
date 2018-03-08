@@ -14,6 +14,7 @@ const PORT = process.env.PORT || 8080
 //LOGGING MIDDLEWARE
 app.use(morgan('default'));
 
+
 //BODY PARSING MIDDLEWARE
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -73,7 +74,9 @@ passport.deserializeUser((id, done) =>
     .catch(done)
 );
 
-db.sync({ force: false })
+
+
+db.sync()
   .then(() => {
     console.log('Postgres running and your data is SYNCED')
     app.listen(PORT, (err) => {

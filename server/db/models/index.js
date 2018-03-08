@@ -5,7 +5,7 @@ const Game = require('./game')
 User.hasMany(Game)  //Game hasMany userID
 //Game.hasMany(User)  //User has many gameID
 //User.belongsTo(Game)
-
+Game.belongsTo(User)
 
 
 module.exports = {
