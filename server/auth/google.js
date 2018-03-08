@@ -33,6 +33,6 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
 
   router.get('/callback',
     passport.authenticate('google', {failureRedirect: '/login'}), (req, res) => {
-      res.redirect(`/`)
+      res.redirect(`/start`)
     });
 }
