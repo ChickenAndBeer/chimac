@@ -34,7 +34,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //app.use("/auth", require("./auth"));
-//app.use("/api", require("./api"));
+app.use("/api", require("./api"));
 
 app.use((req, res, next) => {
   console.log("SESSION: ", req.session);
