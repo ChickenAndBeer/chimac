@@ -1,6 +1,7 @@
 const db = require('./server/db');
-const User = db.models.user;
-const Game = db.models.game;
+const User = db.model('user');
+const Game = db.model('game');
+
 
 const users = [
   {
@@ -33,69 +34,63 @@ const users = [
 
 const games = [
   {
-   name: 'chimac',
    score: 45,
    level: 'Level1',
    userId: 1
   },
   {
-    name: 'chimac',
     score: 100,
     level: 'Level2',
     userId: 1
   },
   {
-    name: 'chimac',
     score: 90,
     level: 'Level2',
     userId: 2
    },
    {
-    name: 'chimac',
     score: 150,
     level: 'Level3',
     userId: 3
    },
    {
-    name: 'chimac',
     score: 70,
     level: 'Level2',
     userId: 3
    },
    {
-    name: 'chimac',
     score: 30,
     level: 'Level1',
     userId: 3
    },
    {
-    name: 'chimac',
     score: 100,
     level: 'Level2',
     userId: 4
    },
 ]
 
-const seed = () => {
-  Promise.all(users.map( aUser => User.create(aUser)))
-    .then( ()=> {
-      Promise.all(games.map( aGame => Game.create(aGame)))
-    })
-}
+const seed = () =>
+  Promise.all(users.map(user => User.create(user)))
+  .then(() =>
+    Promise.all(games.map(game => Game.create(game)))
+  )
 
 const main = () => {
   console.log('Syncing the db');
-  db.sync({force: true})
-    .then( () => {
-      console.log('seeding the db');
-      return seed()
-    })
-    .catch( err => {
-      console.log('error while seeding!')
-      console.log(err)
-    })
-    .then( () => {
-      db.close();
-      return null;
-    })
-}
+  db.sync({ force: true })
+  .then(() => {
+    console.log('Seeding the db');
+    return seed();
+  })
+  .catch(err => {
+    console.log('Error while seeding');
+    console.log(err);
+  })
+  .then(() => {
+    db.close();
+    return null;
+  });
+};
+
+main();
