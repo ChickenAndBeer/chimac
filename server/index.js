@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 8080
 // if (process.env.NODE_ENV !== 'production') require('../secrets')
 
 //LOGGING MIDDLEWARE
-app.use(morgan);
+app.use(morgan('dev'));
 
 //BODY PARSING MIDDLEWARE
 app.use(bodyParser.json());
@@ -73,7 +73,7 @@ passport.deserializeUser((id, done) =>
     .catch(done)
 );
 
-db.sync({ force: true })
+db.sync()
   .then(() => {
     console.log('Postgres running and your data is SYNCED')
     app.listen(PORT, (err) => {
