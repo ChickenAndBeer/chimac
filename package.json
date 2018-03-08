@@ -6,7 +6,8 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
     "test": "jest",
-    "start-dev": "NODE_ENV='development' npm run, build-client-watch & npm run start-server"
+    "start-dev": "NODE_ENV='development' npm run, build-client-watch & npm run start-server",
+    "seed": "node ./seed.js"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
@@ -15,9 +16,6 @@
     "express": "^4.16.2",
     "express-session": "^1.15.6",
     "morgan": "^1.9.0",
-    "seed": "node ./seed.js"
-  },
-  "dependencies": {
     "bluebird": "^3.5.1",
     "nodemon": "^1.17.1",
     "passport": "^0.4.0",
