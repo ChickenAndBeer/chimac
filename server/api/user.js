@@ -4,6 +4,7 @@ module.exports = router;
 
 //  GET /users ------- ALL USER
 router.get('/', (req, res, next)=>{
+  console.log('getting here: api/users')
   User.findAll() // eager loading??
     .then( users => res.json(users))
     .catch(next)
