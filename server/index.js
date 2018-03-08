@@ -12,7 +12,8 @@ const PORT = process.env.PORT || 8080
 // if (process.env.NODE_ENV !== 'production') require('../secrets')
 
 //LOGGING MIDDLEWARE
-app.use(morgan('dev'));
+app.use(morgan('default'));
+
 
 //BODY PARSING MIDDLEWARE
 app.use(bodyParser.json());
@@ -72,6 +73,8 @@ passport.deserializeUser((id, done) =>
     .then(user => done(null, user))
     .catch(done)
 );
+
+
 
 db.sync()
   .then(() => {
